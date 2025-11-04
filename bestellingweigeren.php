@@ -27,6 +27,7 @@
     <title>Document</title>
 </head>
 <body>
-    uw
+
+Bestelling weigeren
 </body>
 </html>
