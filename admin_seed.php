@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 require __DIR__ . '/config.php';
  
@@ -24,3 +25,9 @@ if ($stmt->fetch()) {
     echo "Email: $email<br>";
     echo "Wachtwoord: $password";
 }
+=======
+<?php 
+
+
+
+>>>>>>> ed9899adc0a0f455b8b2454e3c08d679610624b3
