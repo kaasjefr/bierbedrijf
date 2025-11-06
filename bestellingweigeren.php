@@ -1,21 +1,5 @@
 <?php
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
 
 
@@ -28,6 +12,6 @@
 </head>
 <body>
 
-Bestelling weigeren
+Bestelling geweigerd
 </body>
 </html>
