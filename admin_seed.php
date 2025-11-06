@@ -6,7 +6,7 @@ $email = 'admin@bier.test';
 $password = 'admin123';
  
 // Hash het wachtwoord
-$hash = password_hash($password, PASSWORD_DEFAULT);
+$hash = password_hash ($password, PASSWORD_DEFAULT);
  
 // Check of admin al bestaat
 $stmt = $pdo->prepare("SELECT id FROM gebruikers WHERE gebruikersnaam = ?");

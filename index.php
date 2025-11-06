@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($email === '' || $password === '') {
         $err = 'Vul e-mail en wachtwoord in.';
     } else {
-        $stmt = $pdo->prepare('SELECT id, bedrijfsnaam, email, password_hash, role FROM users WHERE email = ?');
+        $stmt = $pdo->prepare('SELECT id, bedrijfsnaam, email, password_hash, role FROM gebruikers WHERE email = ?');
         $stmt->execute([$email]);
         $user = $stmt->fetch();
  
