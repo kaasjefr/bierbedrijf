@@ -15,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
         if ($user && password_verify($password, $user['wachtwoord'])) {
             session_regenerate_id(true);
-            $_SESSION['user'] = [
+            $_SESSION['gebruikers'] = [
                 'id' => (int)$user['id'],
                 'bedrijfsnaam' => $user['bedrijfsnaam'],
                 'email' => $user['email'],
-                'role' => $user['role']
+                'rol' => $user['rol']
             ];
  
-            if ($user['role'] === 'admin') {
+            if ($user['rol'] === 'beheerder') {
                 header('Location: adminhomepagina.php');
             } else {
                 header('Location: bierbestellen.php');

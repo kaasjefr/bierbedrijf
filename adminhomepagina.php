@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '/config.php';
-require __DIR__ . '/auth_check.php';
-require_role('admin');
+//require __DIR__ . '/auth_check.php';
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -18,7 +17,7 @@ require_role('admin');
     <li><a href="bestellingbekijken.php">Bestelling bekijken</a></li>
     <li><a href="bestellingweigeren.php">Bestelling weigeren</a></li>
   </ul>
-  <p><a href="index.php">Uitloggen</a></p>
+  <!--<p><a href="index.php">Uitloggen</a></p>-->
 </body>
 </html>
 
