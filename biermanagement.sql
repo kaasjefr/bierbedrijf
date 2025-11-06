@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 04, 2025 at 02:22 PM
+-- Generation Time: Nov 06, 2025 at 08:53 AM
 -- Server version: 9.3.0
 -- PHP Version: 8.4.7
 
@@ -18,8 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `biermanagement`
+-- Database: `bierbrouwerij`
 --
+CREATE DATABASE IF NOT EXISTS `bierbrouwerij` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `bierbrouwerij`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `adressen`
 --
 
+DROP TABLE IF EXISTS `adressen`;
 CREATE TABLE `adressen` (
   `id` int NOT NULL,
   `locatienaam` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -43,6 +46,7 @@ CREATE TABLE `adressen` (
 -- Table structure for table `bestellingen`
 --
 
+DROP TABLE IF EXISTS `bestellingen`;
 CREATE TABLE `bestellingen` (
   `id` int NOT NULL,
   `gebruiker_id` int DEFAULT NULL,
@@ -58,38 +62,22 @@ CREATE TABLE `bestellingen` (
 -- Table structure for table `gebruikers`
 --
 
+DROP TABLE IF EXISTS `gebruikers`;
 CREATE TABLE `gebruikers` (
   `id` int NOT NULL,
   `gebruikersnaam` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `wachtwoord` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `wachtwoord` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `rol` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `gebruikers`
 --
 
-INSERT INTO `gebruikers` (`id`, `gebruikersnaam`, `wachtwoord`) VALUES
-(1, 'beheerdertest', 'beheerder'),
-(3, 'Kapstok', '1234567');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gebruikersrollen`
---
-
-CREATE TABLE `gebruikersrollen` (
-  `gebruiker_id` int NOT NULL,
-  `rol_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `gebruikersrollen`
---
-
-INSERT INTO `gebruikersrollen` (`gebruiker_id`, `rol_id`) VALUES
-(1, 1),
-(3, 2);
+INSERT INTO `gebruikers` (`id`, `gebruikersnaam`, `wachtwoord`, `email`, `rol`) VALUES
+(1, 'beheerdertest', 'beheerder', 'blablabla@gmail.com', 1),
+(3, 'Kapstok', '1234567', '', 2);
 
 -- --------------------------------------------------------
 
@@ -97,6 +85,7 @@ INSERT INTO `gebruikersrollen` (`gebruiker_id`, `rol_id`) VALUES
 -- Table structure for table `rollen`
 --
 
+DROP TABLE IF EXISTS `rollen`;
 CREATE TABLE `rollen` (
   `id` int NOT NULL,
   `rolnaam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
@@ -108,7 +97,6 @@ CREATE TABLE `rollen` (
 
 INSERT INTO `rollen` (`id`, `rolnaam`) VALUES
 (1, 'beheerder'),
-(3, 'particulier'),
 (2, 'zakelijk');
 
 --
@@ -134,14 +122,8 @@ ALTER TABLE `bestellingen`
 --
 ALTER TABLE `gebruikers`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `gebruikersnaam` (`gebruikersnaam`);
-
---
--- Indexes for table `gebruikersrollen`
---
-ALTER TABLE `gebruikersrollen`
-  ADD PRIMARY KEY (`gebruiker_id`,`rol_id`),
-  ADD KEY `rol_id` (`rol_id`);
+  ADD UNIQUE KEY `gebruikersnaam` (`gebruikersnaam`),
+  ADD KEY `gebruikersrol` (`rol`);
 
 --
 -- Indexes for table `rollen`
@@ -190,11 +172,10 @@ ALTER TABLE `bestellingen`
   ADD CONSTRAINT `bestellingen_ibfk_2` FOREIGN KEY (`adres_id`) REFERENCES `adressen` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `gebruikersrollen`
+-- Constraints for table `gebruikers`
 --
-ALTER TABLE `gebruikersrollen`
-  ADD CONSTRAINT `gebruikersrollen_ibfk_1` FOREIGN KEY (`gebruiker_id`) REFERENCES `gebruikers` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `gebruikersrollen_ibfk_2` FOREIGN KEY (`rol_id`) REFERENCES `rollen` (`id`) ON DELETE CASCADE;
+ALTER TABLE `gebruikers`
+  ADD CONSTRAINT `gebruikersrol` FOREIGN KEY (`rol`) REFERENCES `rollen` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
