@@ -1,7 +1,7 @@
 <?php
 // DB connectie met PDO. Pas deze 3 aan als jouw omgeving anders is.
 $DB_HOST = '127.0.0.1';
-$DB_NAME = 'biermanagement';
+$DB_NAME = 'bierbrouwerij';
 $DB_USER = 'root';
 $DB_PASS = 'ServBay.dev'; // zet je wachtwoord hier als je die hebt in ServBay/XAMPP/MAMP
 
