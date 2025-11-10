@@ -9,11 +9,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($email === '' || $password === '') {
         $err = 'Vul e-mail en wachtwoord in.';
     } else {
-        $stmt = $pdo->prepare('SELECT id, gebruikersnaam, email, wachtwoord FROM gebruikers WHERE email = ?');
+        $stmt = $pdo->prepare('SELECT gebruikers.id, gebruikersnaam, email, wachtwoord, r.rolnaam as rol
+FROM gebruikers
+INNER JOIN rollen AS r ON r.id = gebruikers.rol 
+WHERE email = ?');
         $stmt->execute([$email]);
         $user = $stmt->fetch();
  
-        if ($user && password_verify($password, $user['wachtwoord'])) {
+        if ($user && $password === $user['wachtwoord']) {
             session_regenerate_id(true);
             $_SESSION['gebruikers'] = [
                 'id' => (int)$user['id'],
@@ -43,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <h1>Inloggen</h1>
   <?php if ($err): ?>
-    <p><?php echo htmlspecialchars($err, ENT_QUOTES, 'UTF-8'); ?></p>
+    <p><?php echo htmlspecialchars($err, flags: ENT_QUOTES); ?></p>
   <?php endif; ?>
-  <form method="post" action="auth_check.php" autocomplete="off">
+  <form method="post" action="index.php" autocomplete="off">
     <label>E-mail<br>
       <input type="email" name="email" required>
     </label>

@@ -77,7 +77,7 @@ CREATE TABLE `gebruikers` (
 
 INSERT INTO `gebruikers` (`id`, `gebruikersnaam`, `wachtwoord`, `email`, `rol`) VALUES
 (1, 'beheerdertest', 'beheerder', 'blablabla@gmail.com', 1),
-(3, 'Kapstok', '1234567', '', 2);
+(3, 'Kapstok', '1234567', 'jemoederisplopkoek@jemoemoe.nl', 2);
 
 -- --------------------------------------------------------
 

@@ -10,7 +10,7 @@ require __DIR__ . '/config.php';
 </head>
 <body>
   <h1>Admin Home</h1>
-  <p>Ingelogd als: <?php echo htmlspecialchars($_SESSION['user']['email']); ?> (<?php echo $_SESSION['user']['role']; ?>)</p>
+  <p>Ingelogd als: <?php echo htmlspecialchars($_SESSION['gebruikers']['email']); ?> (<?php echo $_SESSION['gebruikers']['rol']; ?>)</p>
   <ul>
     <li><a href="bestellingbekijken.php">Bestellingen</a></li>
     <li><a href="bestellingaccepteren.php">Bestellingen Accepteren</a></li>
