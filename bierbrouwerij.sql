@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 06, 2025 at 08:53 AM
+-- Generation Time: Nov 11, 2025 at 09:38 AM
 -- Server version: 9.3.0
 -- PHP Version: 8.4.7
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `bierbrouwerij`
 --
-CREATE DATABASE IF NOT EXISTS `bierbrouwerij` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `bierbrouwerij`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `bierbrouwerij`;
 -- Table structure for table `adressen`
 --
 
-DROP TABLE IF EXISTS `adressen`;
 CREATE TABLE `adressen` (
   `id` int NOT NULL,
   `locatienaam` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -46,7 +43,6 @@ CREATE TABLE `adressen` (
 -- Table structure for table `bestellingen`
 --
 
-DROP TABLE IF EXISTS `bestellingen`;
 CREATE TABLE `bestellingen` (
   `id` int NOT NULL,
   `gebruiker_id` int DEFAULT NULL,
@@ -62,7 +58,6 @@ CREATE TABLE `bestellingen` (
 -- Table structure for table `gebruikers`
 --
 
-DROP TABLE IF EXISTS `gebruikers`;
 CREATE TABLE `gebruikers` (
   `id` int NOT NULL,
   `gebruikersnaam` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -85,7 +80,6 @@ INSERT INTO `gebruikers` (`id`, `gebruikersnaam`, `wachtwoord`, `email`, `rol`) 
 -- Table structure for table `rollen`
 --
 
-DROP TABLE IF EXISTS `rollen`;
 CREATE TABLE `rollen` (
   `id` int NOT NULL,
   `rolnaam` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
