@@ -6,18 +6,18 @@
   <h1>Bestelling plaatsen</h1>
   <form action="intotaal.php" method="post">
     <div class="bestel-box">
-      <label for="flesjesAantal">Aantal flesjes (minimaal 10):</label>
-      <input type="number" name="flesjesAantal" id="flesjesAantal" min="0" value="0" max="23">
+      <label for="flesjes_aantal">Aantal flesjes (minimaal 10):</label>
+      <input type="number" name="flesjes_aantal" id="flesjes_aantal" min="0" value="0" max="23">
     </div>
 
     <div class="bestel-box">
-      <label for="krattenAantal">Aantal kratten (24 flesjes):</label>
-      <input type="number" name="krattenAantal" id="krattenAantal" min="0" value="0" max="23">
+      <label for="kratten_aantal">Aantal kratten (24 flesjes):</label>
+      <input type="number" name="kratten_aantal" id="kratten_aantal" min="0" value="0" max="23">
     </div>
 
     <div class="bestel-box">
-      <label for="palletsAantal">Aantal pallets (24 kratten):</label>
-      <input type="number" name="palletsAantal" id="palletsAantal" min="0" value="0">
+      <label for="pallets_aantal">Aantal pallets (24 kratten):</label>
+      <input type="number" name="pallets_aantal" id="pallets_aantal" min="0" value="0">
     </div>
 
     <div class="bestel-box">

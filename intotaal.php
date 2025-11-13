@@ -1,5 +1,5 @@
 <?php
 var_dump($_POST);
-echo $_POST["flesjesAantal"];
-echo $_POST["krattenAantal"];
-echo $_POST["palletsAantal"];
+echo $_POST["flesjes_aantal"];
+echo $_POST["kratten_aantal"];
+echo $_POST["pallets_aantal"];
