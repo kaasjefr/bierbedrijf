@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 11, 2025 at 09:38 AM
+-- Generation Time: Nov 13, 2025 at 02:08 PM
 -- Server version: 9.3.0
 -- PHP Version: 8.4.7
 
@@ -48,7 +48,9 @@ CREATE TABLE `bestellingen` (
   `gebruiker_id` int DEFAULT NULL,
   `adres_id` int NOT NULL,
   `type` enum('zakelijk','particulier') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `aantal` int NOT NULL,
+  `flesjes_aantal` int NOT NULL,
+  `kratten_aantal` int DEFAULT NULL,
+  `pallets_aantal` int DEFAULT NULL,
   `status` enum('Besteld','Betaald','Verzonden','Onderweg','Geleverd') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
